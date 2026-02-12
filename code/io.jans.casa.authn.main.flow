@@ -34,8 +34,8 @@ Repeat 3 times max
      obj | E = Trigger $method userData true
      When E is not null
           Log "@error Authentication flow % for user % crashed: %" method userData.inum E
-          E = null
-          message = We had trouble authenticating you
+          error = null
+          message = "We had trouble authenticating you"
      Otherwise
           When obj.success is true
                Call reinutil updateTrustedDevices 
