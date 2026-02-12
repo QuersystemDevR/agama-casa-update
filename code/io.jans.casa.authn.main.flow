@@ -27,7 +27,7 @@ When prompt2fa is false
      Call reinutil updateTrustedDevices 
      Finish uid
 userData = { uid: uid, inum: reinutil.inum, name: reinutil.name }
-method = Call io.jans.casa.auth.MethodHelper#first methods
+method = Call io.jans.casa.authn.MethodHelper#first methods
 Repeat 3 times max
      Log "@info Launching flow" method
      // //Launch the flow of first authn method
