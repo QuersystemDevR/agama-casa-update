@@ -357,7 +357,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true
+			"selected": false
 		},
 		{
 			"id": "whenNode-23f997d4-a696-4006-bc4e-ad46e06867d3",
@@ -999,11 +999,11 @@
 						{
 							"variableTypeCheck": false,
 							"assignmentExpression": "null",
-							"assignedVariableName": "E"
+							"assignedVariableName": "error"
 						},
 						{
 							"variableTypeCheck": true,
-							"assignmentExpression": "We had trouble authenticating you",
+							"assignmentExpression": "\"We had trouble authenticating you\"",
 							"assignedVariableName": "message"
 						}
 					],
@@ -1020,7 +1020,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": false,
+			"selected": true,
 			"dragging": false
 		},
 		{
@@ -2076,8 +2076,8 @@
 		}
 	],
 	"viewport": {
-		"x": -644.1934257603796,
-		"y": 410.729068311574,
-		"zoom": 0.5
+		"x": -2090.2003507453533,
+		"y": 542.5830063330432,
+		"zoom": 0.6858666442952986
 	}
 }
