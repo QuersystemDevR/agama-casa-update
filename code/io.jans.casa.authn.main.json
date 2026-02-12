@@ -1020,7 +1020,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true,
+			"selected": false,
 			"dragging": false
 		},
 		{
@@ -1384,7 +1384,7 @@
 				},
 				"previousNodeId": "assignmentNode-8dce302b-c674-4333-af93-7b38a28aabd6",
 				"agamaData": {
-					"javaClassName": "io.jans.casa.auth.MethodHelper",
+					"javaClassName": "io.jans.casa.authn.MethodHelper",
 					"javaMethodName": "first",
 					"javaVariableName": "",
 					"exceptionVariableField": "",
@@ -1406,7 +1406,8 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": false
+			"selected": true,
+			"dragging": false
 		}
 	],
 	"edges": [
@@ -2076,8 +2077,8 @@
 		}
 	],
 	"viewport": {
-		"x": -2090.2003507453533,
-		"y": 542.5830063330432,
-		"zoom": 0.6858666442952986
+		"x": -834.7060412003822,
+		"y": 399.9809338375319,
+		"zoom": 0.6224371176910849
 	}
 }
