@@ -12,21 +12,41 @@
         <#if message??>
             <p class="w5 dark-red tc pv2 ph0 ma0 f6">Autenticación Fallida</p>
         </#if>
-        
+
         <form name="login" method="post" enctype="application/x-www-form-urlencoded" class="pt2">
-            <div class="relative w5 mt4 pb2">
-                <input name="username" value="${username!}" type="text" class="focused-text w-100 pb1 dark-gray" required>
+            <div class="relative w-100 mt4 pb2">
+                <span class="absolute left-1 top-1 gray" style="transform: translateY(6px);">👤</span>
+                <input name="username"
+                    value="${username!}"
+                    type="text"
+                    class="focused-text w-100 pb1 dark-gray"
+                    style="padding-left: 2rem;"
+                    required>
                 <label class="focused-label-big">Mail</label>
             </div>
-            <div class="relative w5 mt4 pb1">
-                <input name="password" type="password" class="focused-text w-100 pb1 dark-gray" required>
+
+            <div class="relative w-100 mt4 pb1">
+                <span class="absolute left-1 top-1 gray" style="transform: translateY(6px);">🔒</span>
+                <input id="password"
+                    name="password"
+                    type="password"
+                    class="focused-text w-100 pb1 dark-gray"
+                    style="padding-left: 2rem; padding-right: 3rem;"
+                    required>
+
+                <button type="button"
+                    id="togglePwd"
+                    class="absolute right-1 top-1 bn bg-transparent pointer dark-gray"
+                    style="transform: translateY(2px);"
+                    aria-label="Mostrar u ocultar contraseña">Mostrar</button>
+
                 <label class="focused-label-big">Contraseña</label>
             </div>
+
             <div class="mt5 flex justify-center">
                 <input type="submit" value="Iniciar sesión"
                     class="f7-cust bw0 br1 ph4 pv2 bg-bsgreen-success white hover-bsgreen-success hover-white btn cust-primary-button">
             </div>
-
 
             <input name="device" type="hidden">
             <#if grabLocation>
@@ -57,7 +77,6 @@
         }
         
         function genericGET(url, headers) {
-        
           return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest()
             xhr.open("GET", url)
@@ -67,20 +86,15 @@
             attachEvents(xhr, resolve, reject)
             xhr.send()
           })
-        
         }
         
         function processLocation(obj, zoneProp, cityProp, stateProp, countryProp) {
-            
             let country = obj[countryProp], state = obj[stateProp], city = obj[cityProp], zone = obj[zoneProp]
-            
             if (!country) country = null
             if (!state) state = null
             if (!city) city = null
             if (!zone) zone = null
-            
             return { country, state, city, zone } 
-            
         }
     
         function fillLocationData(field) {
@@ -88,21 +102,17 @@
             /*
             genericGET("https://api.ipapi.is", [])
                 .then(result => {
-        
                         let obj = JSON.parse(result)
                         if (!obj.location) throw new Error("ipapi - no location object")
-                            
                         obj = processLocation(obj.location, "timezone", "city", "state", "country")   //"countryCode"
                         field.value = JSON.stringify(obj)
                         //console.log(field.value)
                     })
                 .catch(err => {
                         console.log("IPAPI call failed:" + err)
-                        
                         genericGET("https://freeipapi.com/api/json/", [])
                             .then(result => {
-                                    let obj = JSON.parse(result)
-                                    
+                                    let obj = JSON.parse(result) 
                                     obj = processLocation(obj, "timeZone", "cityName", "regionName", "countryName")   //"country_code"
                                     field.value = JSON.stringify(obj)
                             })
@@ -111,25 +121,31 @@
         }
 
         function fillPlatformData(field) {
-
             let uapr = (new UAParser()).getResult()
             let platform = { name: uapr.browser.name, version: uapr.browser.version, 
                     osName: uapr.os.name, osVersion: uapr.os.version }                        
             field.value = JSON.stringify(platform)
             console.log(field.value)
-
         }
 
         window.onload = (event) => { 
-            
             let f = document.forms.login                    
             if (${grabLocation?c}) fillLocationData(f.location)
-            fillPlatformData(f.device)
+            fillPlatformData(f.device)        
+            
+            // Toggle password
+            const toggle = document.getElementById("togglePwd");
+            const pwd = document.getElementById("password");
 
+            if (toggle && pwd) {
+            toggle.addEventListener("click", () => {
+                const isPwd = pwd.type === "password";
+                pwd.type = isPwd ? "text" : "password";
+                toggle.textContent = isPwd ? "Ocultar" : "Mostrar";
+            });
+            }
         }
     </script>
-
     <#-- "preload" font awesome used later in selector.ftlh -->
     <script src="${assets.contextPath}/scripts/font-awesome-5.12.1.all.min.js" defer></script>
-
 </@com.main>

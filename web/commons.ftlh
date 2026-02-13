@@ -61,7 +61,7 @@
                     </div>
                     <footer class="pa3 f7 dark-gray shadow-4 bg-blank cust-footer-rule">
                         <div class="cust-footer-msg-rule">
-                            Powered by <a href="https://quersystem.com" class="link blue">Quersystem</a>.
+                            Estás accediendo al portal de autenticación del servicio IRISmail que RedIRIS ofrece a su organización. Esta actualización forma parte de la mejora de seguridad 2026. <a href="https://www.rediris.es/irismail/auten.html" class="link blue">Aquí</a> encontraras información para comprobar la autenticidad de este acceso.
                         </div>
                     </footer>
                 </div>
